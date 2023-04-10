@@ -14,6 +14,13 @@ import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
 import pucrs.myflight.modelo.Voo.Status;
 
+// 
+// alterado em...
+// por ...
+// modificacoes:
+//    - teste da classe...
+//
+
 public class App {
 
 	public static void main(String[] args) {

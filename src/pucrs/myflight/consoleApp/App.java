@@ -12,6 +12,8 @@ import pucrs.myflight.modelo.GerenciadorRotas;
 import pucrs.myflight.modelo.GerenciadorVoos;
 import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
+import pucrs.myflight.modelo.VooEscalas;
+import pucrs.myflight.modelo.VooVariasEscalas;
 import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
@@ -35,7 +37,7 @@ public class App {
 		Geo loc4 = new Geo(25.7933, 80.2906);
 
 		Aeroporto porto1 = new Aeroporto("POA", "Salgado Filho Intl apt",loc1);
-		Aeroporto porto2 = new Aeroporto("GRU", "São PAulo Guarulhos Intl apt",loc2);
+		Aeroporto porto2 = new Aeroporto("GRU", "São Paulo Guarulhos Intl apt",loc2);
 		Aeroporto porto3 = new Aeroporto("LIS", "Lisbon Intl apt",loc3);
 		Aeroporto porto4 = new Aeroporto("MIA", "Miami Intenational apt",loc4);
 
@@ -43,6 +45,7 @@ public class App {
 		Rota r2 = new Rota(compAerea4, porto1, porto2, nave1);
 		Rota r3 = new Rota(compAerea3, porto4, porto3, nave3);
 		Rota r4 = new Rota(compAerea1, porto2, porto4, nave4);
+		Rota r5 = new Rota(compAerea1, porto3, porto2, nave2);
 
 		LocalDateTime ldt1 = LocalDateTime.of(2016, 8, 10, 8,0);
 		LocalDateTime ldt2 = LocalDateTime.of(2016, 8, 10, 15, 0);
@@ -56,8 +59,10 @@ public class App {
 		v1.setStatus(Status.ATRASADO);
 		Voo v2 = new Voo(r1, ldt2, d2);
 		v2.setStatus(Status.CONFIRMADO);
-		Voo v3 = new Voo(r4, ldt3, d3);
+		Voo v3 = new Voo(r3, ldt3, d3);
 		v3.setStatus(Status.CANCELADO);
+		Voo v4 = new Voo(r5, ldt1, d2);
+		v4.setStatus(Status.CONFIRMADO);
 
 		//System.out.println("Aeronave: "+nave1.toString());
 		//System.out.println("Aeroporto: "+porto1.toString());
@@ -134,5 +139,25 @@ public class App {
 
 		//System.out.println("Rota: "+r1.toString());
 		//System.out.println("Voo: "+v1.toString());
+
+		System.out.print("\nDISTANCIA de Porto Alegre a São Paulo é: ");
+		double distancia = loc1.distancia(loc2);
+		System.out.printf("%.3f\n",distancia);
+
+		System.out.println("\nVoo com Escala\n");
+		System.out.println("ESCALA");
+		VooEscalas ve = new VooEscalas(r1, r2, ldt1, d1);
+		System.out.println(ve.toString());
+		
+		System.out.println("\nVoo com varias escalas\n");
+		VooVariasEscalas vve = new VooVariasEscalas(r3, ldt3, d3);
+		vve.adicionar(v3);
+		vve.adicionar(v4);
+		vve.adicionar(v2);
+		for(Voo v : vve.listarTodosVoos()){
+			System.out.println(">>>");
+			System.out.println(v);
+		}
+		
 	}
 }

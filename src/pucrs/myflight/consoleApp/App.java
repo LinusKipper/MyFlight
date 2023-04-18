@@ -83,6 +83,13 @@ public class App {
 			System.out.println(gn);
 		}
 
+		System.out.println("\nORDENANDO AERONAVES");
+		gerenciadorAeronaves.ordenaDescricao();
+		for(Aeronave gn : gerenciadorAeronaves.listarTodasAeronaves()){
+			System.out.println(" >>> ");
+			System.out.println(gn);
+		}
+
 		GerenciadorAeroportos gerencidaorAeroportos = GerenciadorAeroportos.getInstance();
 
 		gerencidaorAeroportos.adicionar(porto1);
@@ -92,6 +99,13 @@ public class App {
 
 		//System.out.println(gerencidaorAeroportos.toString());
 		System.out.println("\nAEROPORTOS");
+		for(Aeroporto gp : gerencidaorAeroportos.listarTodosAeroportos()){
+			System.out.println(" >>> ");
+			System.out.println(gp);
+		}
+
+		System.out.println("\n ORDENANDO AEROPORTOS");
+		gerencidaorAeroportos.ordenaNome();
 		for(Aeroporto gp : gerencidaorAeroportos.listarTodosAeroportos()){
 			System.out.println(" >>> ");
 			System.out.println(gp);
@@ -158,6 +172,5 @@ public class App {
 			System.out.println(">>>");
 			System.out.println(v);
 		}
-		
 	}
 }

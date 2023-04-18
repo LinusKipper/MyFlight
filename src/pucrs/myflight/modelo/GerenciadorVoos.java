@@ -16,7 +16,8 @@ public class GerenciadorVoos {
     public static GerenciadorVoos getInstance(){
         if(instance == null)
             instance = new GerenciadorVoos();
-        return null;
+            
+        return instance;
     }
 
     public void adicionar(Voo voei){

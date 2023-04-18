@@ -1,6 +1,6 @@
 package pucrs.myflight.modelo;
 
-public class CiaAerea {
+public class CiaAerea implements Comparable<CiaAerea>{
 	private String codigo;
 	private String nome;
 	
@@ -16,9 +16,13 @@ public class CiaAerea {
 	public String getNome() {
 		return nome;
 	}
-	
+
+	public int compareTo(CiaAerea outro) {
+		return nome.compareTo(outro.nome);
+	}
+
 	@Override
 	public String toString(){
-		return String.format("(%s) \t %s",codigo, nome);
+		return String.format("(%s) \t Cia aerea %s",codigo, nome);
 	}
 }

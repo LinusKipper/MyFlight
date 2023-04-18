@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GerenciadorAeronaves {
 
@@ -23,6 +24,10 @@ public class GerenciadorAeronaves {
             aeronaves.add(nave);
         }
 
+        public ArrayList<Aeronave> listarTodasAeronaves(){
+            return aeronaves;
+        }
+
         public Aeronave buscarPorCodigo(String cod){
             for(Aeronave nave: aeronaves){
                 if(nave.getCodigo() == cod)
@@ -30,7 +35,11 @@ public class GerenciadorAeronaves {
             }
             return null;
         }
-
+         
+        public void ordenaDescricao(){
+            Collections.sort(aeronaves);
+        }
+        
         @Override
         public String toString(){
             StringBuilder aux = new StringBuilder("\nGerenciador de Aeronaves\n- - - - - - - - - - -\n");

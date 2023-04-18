@@ -41,6 +41,6 @@ public class Voo {
 
 	@Override
 	public String toString(){
-		return String.format("%s \t %s \t %s \t %s",rota, datahora, duracao, status);
+		return String.format("%s \t data e hora %s \t  duração %s \t  status %s",rota, datahora, duracao, status);
 	}
 }

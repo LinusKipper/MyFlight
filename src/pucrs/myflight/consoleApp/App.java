@@ -14,13 +14,6 @@ import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
 import pucrs.myflight.modelo.Voo.Status;
 
-// 
-// alterado em...
-// por ...
-// modificacoes:
-//    - teste da classe...
-//
-
 public class App {
 
 	public static void main(String[] args) {
@@ -66,10 +59,10 @@ public class App {
 		Voo v3 = new Voo(r4, ldt3, d3);
 		v3.setStatus(Status.CANCELADO);
 
-		//System.out.println(nave1.toString());
-		//System.out.println(porto1.toString());
-		//System.out.println(compAerea1.toString());
-		//System.out.println(loc1.toString());
+		//System.out.println("Aeronave: "+nave1.toString());
+		//System.out.println("Aeroporto: "+porto1.toString());
+		//System.out.println("Companhia aerea: "+compAerea1.toString());
+		//System.out.println("Latitude e Longitude: "+loc1.toString());
 
 		GerenciadorAeronaves gerenciadorAeronaves = GerenciadorAeronaves.getInstance();
 
@@ -79,6 +72,11 @@ public class App {
 		gerenciadorAeronaves.inserir(nave4);
 
 		//System.out.println(gerenciadorAeronaves.toString());
+		System.out.println("\nAERONAVES");
+		for(Aeronave gn : gerenciadorAeronaves.listarTodasAeronaves()){
+			System.out.println(" >>> ");
+			System.out.println(gn);
+		}
 
 		GerenciadorAeroportos gerencidaorAeroportos = GerenciadorAeroportos.getInstance();
 
@@ -88,6 +86,11 @@ public class App {
 		gerencidaorAeroportos.adicionar(porto4);
 
 		//System.out.println(gerencidaorAeroportos.toString());
+		System.out.println("\nAEROPORTOS");
+		for(Aeroporto gp : gerencidaorAeroportos.listarTodosAeroportos()){
+			System.out.println(" >>> ");
+			System.out.println(gp);
+		}
 
 		GerenciadorCia gerenciadorCia = GerenciadorCia.getInstance();
 
@@ -96,8 +99,12 @@ public class App {
 		gerenciadorCia.inserir(compAerea3);
 		gerenciadorCia.inserir(compAerea4);
 
-		System.out.println(gerenciadorCia.toString());
-
+		//System.out.println(gerenciadorCia.toString());
+		System.out.println("\nCOMPANHIA AEREA");
+		for(CiaAerea gc : gerenciadorCia.listarTodasCiaAerea()){
+			System.out.println(" >>> ");
+			System.out.println(gc);
+		}
 		GerenciadorRotas gerenciadorRotas = GerenciadorRotas.getInstance();
 
 		gerenciadorRotas.adicionar(r1);
@@ -105,7 +112,12 @@ public class App {
 		gerenciadorRotas.adicionar(r3);
 		gerenciadorRotas.adicionar(r4);
 		
-		System.out.println(gerenciadorRotas.toString());
+		//System.out.println(gerenciadorRotas.toString());
+		System.out.println("\nROTAS");
+		for(Rota gr : gerenciadorRotas.listarTodasRotas()){
+			System.out.println(" >>> ");
+			System.out.println(gr);
+		}
 
 		GerenciadorVoos gerenciadorVoos = GerenciadorVoos.getInstance();
 
@@ -113,10 +125,14 @@ public class App {
 		gerenciadorVoos.adicionar(v2);
 		gerenciadorVoos.adicionar(v3);
 
-		//n printa gerenciador de voos
 		//System.out.println(gerenciadorVoos.toString());
+		System.out.println("\nVOOS");
+		for(Voo v : gerenciadorVoos.listarTodosVoos()){
+			System.out.println(" >>> ");
+			System.out.println(v);
+		}
 
-		//System.out.println(r1.toString());
-		//System.out.println(v1.toString());
+		//System.out.println("Rota: "+r1.toString());
+		//System.out.println("Voo: "+v1.toString());
 	}
 }

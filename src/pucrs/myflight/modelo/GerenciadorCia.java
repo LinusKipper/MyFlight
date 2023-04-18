@@ -34,7 +34,7 @@ public class GerenciadorCia {
 
     // metodo get q tipo de referencia
 
-    public ArrayList<CiaAerea> listarTodas(){
+    public ArrayList<CiaAerea> listarTodasCiaAerea(){
         return empresas;
     }
     
@@ -62,14 +62,4 @@ public class GerenciadorCia {
             }
             return aux.toString();
         }
-
-    /*
-      public int getValorTotalCentavos() {
-        int somatorio = 0;
-        for (int i = 0; i < moedas.size(); i++) {
-            somatorio = somatorio + moedas.get(i).getValorCentavos();
-        }
-        return somatorio;
-    }
-     */
 }

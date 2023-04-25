@@ -12,9 +12,9 @@ import pucrs.myflight.modelo.GerenciadorRotas;
 import pucrs.myflight.modelo.GerenciadorVoos;
 import pucrs.myflight.modelo.Rota;
 import pucrs.myflight.modelo.Voo;
-import pucrs.myflight.modelo.VooEscalas;
-import pucrs.myflight.modelo.VooVariasEscalas;
 import pucrs.myflight.modelo.Voo.Status;
+import pucrs.myflight.modelo.VooDireto;
+import pucrs.myflight.modelo.VooEscalas;
 
 public class App {
 
@@ -55,13 +55,13 @@ public class App {
 		Duration d2 = Duration.ofMinutes(120);
 		Duration d3 = Duration.ofMinutes(120);
 
-		Voo v1 = new Voo(r2, ldt1, d1);
+		Voo v1 = new VooDireto(ldt1, r2, d1);
 		v1.setStatus(Status.ATRASADO);
-		Voo v2 = new Voo(r1, ldt2, d2);
+		Voo v2 = new VooDireto(ldt2, r1, d2);
 		v2.setStatus(Status.CONFIRMADO);
-		Voo v3 = new Voo(r3, ldt3, d3);
+		Voo v3 = new VooDireto(ldt3, r3, d3);
 		v3.setStatus(Status.CANCELADO);
-		Voo v4 = new Voo(r5, ldt1, d2);
+		Voo v4 = new VooDireto(ldt1, r5, d2);
 		v4.setStatus(Status.CONFIRMADO);
 
 		//System.out.println("Aeronave: "+nave1.toString());
@@ -151,24 +151,20 @@ public class App {
 			System.out.println(v);
 		}
 
-		//System.out.println("Rota: "+r1.toString());
-		//System.out.println("Voo: "+v1.toString());
+		System.out.println("\n"+"Rota: "+r1.toString()+"\n");
+		System.out.println("Voo: "+v1.toString()+"\n");
 
-		System.out.print("\nDISTANCIA de Porto Alegre a São Paulo é: ");
+		System.out.print("DISTANCIA de Porto Alegre a São Paulo é: ");
 		double distancia = loc1.distancia(loc2);
 		System.out.printf("%.3f\n",distancia);
 
 		System.out.println("\nVoo com Escala\n");
-		System.out.println("ESCALA");
-		VooEscalas ve = new VooEscalas(r1, r2, ldt1, d1);
-		System.out.println(ve.toString());
-		
-		System.out.println("\nVoo com varias escalas\n");
-		VooVariasEscalas vve = new VooVariasEscalas(r3, ldt3, d3);
-		vve.adicionar(v3);
-		vve.adicionar(v4);
-		vve.adicionar(v2);
-		for(Voo v : vve.listarTodosVoos()){
+		VooEscalas ve = new VooEscalas(ldt1, r3, d1);
+		System.out.println(ve.toString()+"\n");
+		ve.adicionaRota(r5);
+		ve.adicionaRota(r1);
+		//System.out.println(ve.toString());
+		for(Rota v : ve.getRotas()){
 			System.out.println(">>>");
 			System.out.println(v);
 		}
